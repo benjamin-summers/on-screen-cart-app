@@ -1,0 +1,35 @@
+div.container {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "search search cart" "products products cart";
+}
+
+div.search-bar {
+    grid-area: search;
+}
+
+div.search-bar input, button {
+    width: 100%;
+}
+
+div.cart {
+    text-align: center;
+    grid-area: cart;
+}
+
+div.products {
+    grid-area: products;
+}
+
+div.products ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+}
+
+div.products ul>li {
+    display: inline-block;
+}
