@@ -1,23 +1,40 @@
 import React, { Component } from 'react';
 import Form from './Form';
+import Product from './Product';
 
 export default class App extends Component {
     state = { 
-        name: '',
-        price: '',
-        src: '',
+        src: []
     }
 
     handleChange = e => {
         this.setState({
-            [e.target.name]: e.target.value
+            src: [e.target.value]
+        })
+    }
+
+    handleSubmit = e => {
+        e.preventDefault();
+
+        let productList = [];
+
+        productList.push(this.state.src);
+
+        this.setState({
+            src: [...productList]
         })
     }
 
     render() {
+
+        let productsRender = this.state.src.map((product) => {
+            return <Product pdSrc={product} />
+        })
+
         return (
             <div>
-                <Form Change={this.handleChange.bind(this)} name={this.state.name} price={this.state.price} src={this.state.src} />
+                <Form Submit={this.handleSubmit.bind(this)} Change={this.handleChange.bind(this)} src={this.state.src} />
+                {productsRender}
             </div>
         )
     }

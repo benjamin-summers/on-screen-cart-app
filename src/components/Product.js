@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Product = props => {
-    return <div>Product</div>
+const Product = ({pdSrc}) => {
+    return (
+        <div>
+            <img src={pdSrc} alt="product one" />
+        </div>
+    )
 }
 
 export default Product;
