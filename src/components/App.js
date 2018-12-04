@@ -6,7 +6,8 @@ import '../styles/main.css';
 export default class App extends Component {
     state = { 
         term: '',
-        src: []
+        src: [],
+        cart: []
     }
 
     handleChange = e => {
@@ -20,20 +21,23 @@ export default class App extends Component {
         
         const {src, term} = this.state;
 
-        let productList = [...src];
+        let productsList = src;
 
-        productList.push(term);
+        productsList.push(term);
 
         this.setState({
-            src: [src, ...productList],
-            term: ''
+            src: productsList
         })
     }
 
     render() {
 
         let productsRender = this.state.src.map((product) => {
-            return <li><Product className="product" key={Date.toString()} pdSrc={product} /></li>;
+            return <li onClick={() => {let cartList = this.state.cart; cartList.push(product); this.setState({cart: cartList});}}><Product className="product" key={Date.toString()} pdSrc={product} /></li>;
+        })
+        
+        let cartRender = this.state.cart.map((cartItem) => {
+            return <li className="cart-item"><Product key={Date.toString} pdSrc={cartItem} /></li>
         })
 
         return (
@@ -47,7 +51,9 @@ export default class App extends Component {
                     </ul>
                 </div>
                 <div className="cart">
-                    ProductCart
+                        <ul>
+                            {cartRender}
+                        </ul>
                 </div>
             </div>
         )

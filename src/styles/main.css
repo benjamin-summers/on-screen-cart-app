@@ -19,6 +19,22 @@ div.cart {
     grid-area: cart;
 }
 
+div.cart ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+}
+
+div.cart ul>li {
+    display: inline-block;
+}
+
+div.cart ul>li>img {
+    height: 25px;
+    width: 25px;
+}
+
 div.products {
     grid-area: products;
 }
